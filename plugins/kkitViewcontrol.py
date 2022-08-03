@@ -93,7 +93,6 @@ class GraphicalView(QGraphicsView):
     
     def resizeEvent(self, event):
         #print event.size().width(),event.size().height()
-        print("kvc 93 ",self.sceneContainerPt,self.sceneContainerPt.itemsBoundingRect())
         self.fitInView(self.sceneContainerPt.itemsBoundingRect().x()-10,self.sceneContainerPt.itemsBoundingRect().y()-10,self.sceneContainerPt.itemsBoundingRect().width()+20,self.sceneContainerPt.itemsBoundingRect().height()+20,Qt.IgnoreAspectRatio)
         #print("Called =>", event)
 

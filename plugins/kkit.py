@@ -438,7 +438,6 @@ class  KineticsWidget(EditorWidgetBase):
                 hLayout = QGridLayout(self)
                 self.setLayout(hLayout)
                 hLayout.addWidget(self.view)
-                print("437 ",self.sceneContainer.itemsBoundingRect())
                 self.view.fitInView(self.sceneContainer.itemsBoundingRect().x()-10,self.sceneContainer.itemsBoundingRect().y()-10,self.sceneContainer.itemsBoundingRect().width()+20,self.sceneContainer.itemsBoundingRect().height()+20,Qt.IgnoreAspectRatio)
 
     def getMooseObj(self):

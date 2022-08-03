@@ -514,7 +514,6 @@ class ObjectEditDockWidget(QDockWidget):
         lineedit = QLineEdit("Notes:")
         lineedit.setReadOnly(True)
         layout.addWidget(lineedit)
-        print(" 513 objecteditor ",moose.element(mobj).className)
         if (  (moose.element(mobj).isA("PoolBase"))
            or (moose.element(mobj).isA("Reac"))
            or (moose.element(mobj).isA("EnzBase"))

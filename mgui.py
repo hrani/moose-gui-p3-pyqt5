@@ -427,7 +427,6 @@ class MWindow(QtWidgets.QMainWindow):
         if not hasattr(self, 'dockWidgets') or self.dockWidgets is None:
             self.dockWidgets = {}
             dockWidget = QtWidgets.QDockWidget('Python')
-            print("python dockerwidget ")
             #dockWidget.setWidget(self.getShellWidget())
             self.dockWidgets[dockWidget] = True
             self.addDockWidget(Qt.BottomDockWidgetArea, dockWidget)
