@@ -80,7 +80,7 @@
 __author__ = "Subhasis Ray"
 import sys
 import numpy as np
-from PyQt5 import QtGui, QtCore
+from PyQt5 import QtGui, QtCore,QtWidgets
 from PyQt5.Qt import Qt
 from matplotlib import mlab
 from matplotlib.figure import Figure
@@ -152,12 +152,12 @@ class CanvasWidget(FigureCanvas):
         # pos = self.mapFromGlobal(QCursor.pos())
         # print "Mouse Position : ", pos
         modelRoot, element = event.mimeData().data
-        if isinstance (element,moose.PoolBase):
+        if (element.isA("PoolBase")):
             plotType = "Conc"
-            msgBox = QtGui.QMessageBox()
+            msgBox = QtWidgets.QMessageBox()
             msgBox.setText('What to plot?')
-            msgBox.addButton(QtGui.QPushButton('Number'), QtGui.QMessageBox.YesRole)
-            msgBox.addButton(QtGui.QPushButton('Concentration'), QtGui.QMessageBox.NoRole)
+            msgBox.addButton(QtWidgets.QPushButton('Number'), QtWidgets.QMessageBox.YesRole)
+            msgBox.addButton(QtWidgets.QPushButton('Concentration'), QtWidgets.QMessageBox.NoRole)
             ret = msgBox.exec_()
             if ret == 0:
                 plotType = "N"
@@ -165,12 +165,12 @@ class CanvasWidget(FigureCanvas):
             table     = moose.utils.create_table(tablePath, element, plotType,"Table2")
             # moose.connect(table, 'requestOut', element, 'getConc')
             self.updateSignal.emit()
-        elif isinstance(element, moose.CompartmentBase):
+        elif (element.isA("moose.CompartmentBase")):
             tablePath = moose.utils.create_table_path(self.model, self.graph, element, "Vm")
             table     = moose.utils.create_table(tablePath, element, "Vm","Table")
             self.updateSignal.emit()
         else:
-            QtGui.QMessageBox.question(self, 'Message',"This element's properties cannot be plotted.", QtGui.QMessageBox.Ok)
+            QtWidgets.QMessageBox.question(self, 'Message',"This element's properties cannot be plotted.", QtWidgets.QMessageBox.Ok)
 
     def addSubplot(self, rows, cols):
         """Add a subplot to figure and set it as current axes."""

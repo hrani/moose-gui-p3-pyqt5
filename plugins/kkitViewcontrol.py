@@ -893,11 +893,11 @@ class GraphicalView(QGraphicsView):
                     self.setCursor(Qt.CrossCursor)
                     mimeData = QtCore.QMimeData()
                     mimeData.setText(item.mobj.name)
-                    mimeData.setData("text/plain", "")
+                    mimeData.setData("text/plain",QtCore.QByteArray())
                     mimeData.data =(self.modelRoot,item.mobj)
                     drag = QtGui.QDrag(self)
                     drag.setMimeData(mimeData)
-                    dropAction = drag.start(QtCore.Qt.MoveAction)
+                    dropAction = drag.exec(QtCore.Qt.MoveAction)
                     self.setCursor(Qt.ArrowCursor)
 
     
