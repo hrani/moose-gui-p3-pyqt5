@@ -942,7 +942,8 @@ class PlotWidget(QWidget):
         action  = QAction(icon, "Add a graph", self.navToolbar)
         # self.navToolbar.addAction(action)
         action.triggered.connect(self.addGraph.emit)
-        self.navToolbar.insertAction(self.navToolbar.actions()[0], action)
+        #action.triggered.addGraph.emit(self.addGraph)
+        #self.navToolbar.insertAction(self.navToolbar.actions()[0], action)
 
         # Delete Graph Action
         pixmap = QtGui.QPixmap("icons/delete_graph.png")
@@ -1068,10 +1069,12 @@ class PlotWidget(QWidget):
         #harsha: policy graphs will be under /model/modelName need to change in kkit
         #for tabId in moose.wildcardFind('%s/##[TYPE=Table]' % (modelroot)):
         
-        #if self.graph != 'None':
+        # if self.graph != 'None':
         #    moose.element('/')
-        #if not moose.exists(self.graph):
+        # if not moose.exists(self.graph):
         #    self.graph = moose.element('/model/graph')
+        print("1075 default",self.graph)
+
         plotTables = list(moose.wildcardFind(self.graph.path + '/##[TYPE=Table]'))
         plotTables.extend(moose.wildcardFind(self.graph.path + '/##[TYPE=Table2]'))
         if len (plotTables) > 0:
