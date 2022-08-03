@@ -1073,7 +1073,6 @@ class PlotWidget(QWidget):
         #    moose.element('/')
         # if not moose.exists(self.graph):
         #    self.graph = moose.element('/model/graph')
-        print("1075 default",self.graph)
 
         plotTables = list(moose.wildcardFind(self.graph.path + '/##[TYPE=Table]'))
         plotTables.extend(moose.wildcardFind(self.graph.path + '/##[TYPE=Table2]'))
