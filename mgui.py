@@ -337,7 +337,8 @@ class MWindow(QtWidgets.QMainWindow):
         return dialog
 
     def run_genesis_script(self,filepath,solver):
-        self.popup.hide()
+        if self.popup:
+            self.popup.hide()
         abspath = os.path.abspath(filepath)
         directory, modulename = os.path.split(abspath)
 
@@ -349,7 +350,8 @@ class MWindow(QtWidgets.QMainWindow):
         widget.runSimulation()
 
     def run_python_script(self, filepath):
-        self.popup.hide()
+        if self.popup:
+            self.popup.hide()
         busyCursor()
         import subprocess, shlex
         t = os.path.abspath(filepath)
