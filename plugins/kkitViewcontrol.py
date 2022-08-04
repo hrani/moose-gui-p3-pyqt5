@@ -95,7 +95,7 @@ class GraphicalView(QGraphicsView):
         #print event.size().width(),event.size().height()
         self.fitInView(self.sceneContainerPt.itemsBoundingRect().x()-10,self.sceneContainerPt.itemsBoundingRect().y()-10,self.sceneContainerPt.itemsBoundingRect().width()+20,self.sceneContainerPt.itemsBoundingRect().height()+20,Qt.IgnoreAspectRatio)
         #print("Called =>", event)
-
+        self.update()
         return
     
     def resolveCompartmentInteriorAndBoundary(self, item, position):
@@ -348,10 +348,11 @@ class GraphicalView(QGraphicsView):
                     v.setRect(rectgrp.x()-10,rectgrp.y()-10,(rectgrp.width()+20),(rectgrp.height()+20))
                 for k, v in self.layoutPt.qGraCompt.items():
                     rectcompt = v.childrenBoundingRect()
+
                     if linfo.modeltype == "new_kkit":
                         #if newly built model then compartment is size is fixed for some size.
-                        print(" kvc 351 ",v.boundingRect(),rectcompt)
                         comptBoundingRect = v.boundingRect()
+                        
                         if not comptBoundingRect.contains(rectcompt):
                             self.layoutPt.updateCompartmentSize(v)
                     else:

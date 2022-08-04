@@ -524,8 +524,11 @@ class GRPItem(QGraphicsRectItem):
 class ComptItem(QGraphicsRectItem):
     name = COMPARTMENT
     qgtextPoisitionChage = QtCore.pyqtSignal('PyQt_PyObject')
+    qgdropped = QtCore.pyqtSignal('PyQt_PyObject')
     def __init__(self,parent,x,y,w,h,item):
         self.cmptEmitter = QtCore.QObject()
+        #qgdropped = QtCore.pyqtSignal('PyQt_PyObject')
+    
         iParent = item
         '''
         self._rect = QtCore.QRectF(x,y,w,h)

@@ -718,6 +718,7 @@ class  KineticsWidget(EditorWidgetBase):
         self.qGraCompt[key] = self.new_Compt
         self.new_Compt.setRect(10,10,10,10)
         self.sceneContainer.addItem(self.new_Compt)
+        self.sceneContainer.update()
 
     def setupDisplay(self,info,graphicalObj,objClass):
         Annoinfo = Annotator(info)

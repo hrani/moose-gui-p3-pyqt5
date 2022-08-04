@@ -51,7 +51,7 @@ def checkCreate(scene,view,modelpath,mobj,string,ret_string,num,event_pos,layout
         
         mobj.volume = 1e-15
         mesh = moose.element(mobj.path+'/mesh')
-        qGItem = ComptItem(scene,pos.toPoint().x(),pos.toPoint().y(),20,20,mobj)
+        qGItem = ComptItem(scene,pos.toPoint().x(),pos.toPoint().y(),100,100,mobj)
         qGItem.setPen(QtGui.QPen(QtGui.QColor(66,66,66,100), 1, Qt.SolidLine, Qt.RoundCap, Qt.RoundJoin))
         view.sceneContainerPt.addItem(qGItem)
         #qGItem.cmptEmitter.connect(qGItem.cmptEmitter,QtCore.SIGNAL("qgtextPositionChange(PyQt_PyObject)"),layoutPt.positionChange1)
@@ -62,10 +62,16 @@ def checkCreate(scene,view,modelpath,mobj,string,ret_string,num,event_pos,layout
         #view.dropped.emit(mobj)
         #self.dropped.emit(mobj)
         #view.emit(QtCore.SIGNAL("dropped"),mobj)
-        view.dropped.emit(mobj)
+        #view.dropped.emit(mobj)
+        #qGItem.cmptEmitter.dropped(mobj)
+        #qGItem.cmptEmitter.qgdropped.connect(layoutPt.objectEditSlot)#.emit(mobj)
+        #view.dropped.cmptEmitter(layoutPt.objectEditSlot)
+        #view.emit.dropped(mobj)
         compt = layoutPt.qGraCompt[moose.element(mobj)]
-        updateCompartmentSize(compt)
+        #updateCompartmentSize(compt)
         #setupItem(modelpath.path,layoutPt.srcdesConnection)
+        #view.emit.resizeEvent()
+        view.fitInView(view.sceneContainerPt.itemsBoundingRect().x()-10,view.sceneContainerPt.itemsBoundingRect().y()-10,view.sceneContainerPt.itemsBoundingRect().width()+20,view.sceneContainerPt.itemsBoundingRect().height()+20,Qt.IgnoreAspectRatio)
     elif string == "Pool" or string == "BufPool":
         #getting pos with respect to compartment otherwise if compartment is moved then pos would be wrong
         posWrtComp = (itemAtView.mapFromScene(pos)).toPoint()
