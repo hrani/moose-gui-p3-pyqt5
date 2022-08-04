@@ -368,7 +368,10 @@ class ObjectEditModel(QtCore.QAbstractTableModel):
                         ret = QtCore.QVariant((str(Kd)))
                     if ( (str(field) != "Notes") and (str(field) != "className") and (str(field) != "Kd") and (str(field) != "compartment")):
                         ret = self.mooseObject.getField(str(field))
+                        if (field in ["nInit","n","conc","concInit","Kf","Kb","numKf","numKb","Km","numKm","kcat","volume"]):
+                            ret = format(ret,'.6E')
                         ret = QtCore.QVariant((str(ret)))
+                        
                     elif(str(field) == "className"):
                         ret = self.mooseObject.getField(str(field))
                         if 'Zombie' in ret:
