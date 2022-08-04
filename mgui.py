@@ -80,7 +80,7 @@ from shell import get_shell_class
 from objectedit import ObjectEditDockWidget
 from newmodeldialog import DialogWidget
 import re
-from biomodelsclient import BioModelsClientWidget
+#from biomodelsclient import BioModelsClientWidget
 from MdiArea import MdiArea
 import os
 from moose.chemUtil.add_Delete_ChemicalSolver import *
@@ -761,7 +761,7 @@ class MWindow(QtWidgets.QMainWindow):
             self.connectBioModelAction.setShortcut(QtCore.QCoreApplication.translate("MainWindow", "Ctrl+B", None, 0))
             #self.connect(self.connectBioModelAction, QtCore.SIGNAL('triggered()'), self.connectBioModel)
             self.connectBioModelAction.triggered.connect(self.connectBioModel)
-        self.fileMenu.addAction(self.connectBioModelAction)
+        #self.fileMenu.addAction(self.connectBioModelAction)
         return self.fileMenu
 
     def getEditMenu(self):
